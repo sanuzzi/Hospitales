@@ -56,6 +56,7 @@ class Doctor {
 
 	// Comentario sin sentido
 	// A veeerr
+	// Ñaaaaa
 
 	// A veeerr
 	method aumentaCalidad(puntosParaAumentar) {
