@@ -55,8 +55,7 @@ class Doctor {
 	}
 
 	// Comentario sin sentido
-	// A veeerr
-	// Ñaaaaa
+	// Línea 5888!!!!
 
 	// A veeerr
 	method aumentaCalidad(puntosParaAumentar) {
