@@ -1,0 +1,56 @@
+import hospital.*
+
+describe "pruebas para el hospital y doctores" {
+	const enfermo
+	const doctor
+	const hospitalSinDoctoresNiPacientes
+	const hospitalConUnDoctor
+	
+	fixture {
+		enfermo = new Paciente(50, 50)
+		enfermo.enfermate()
+		
+		doctor = new Doctor()
+		
+		hospitalSinDoctoresNiPacientes = new Hospital()
+		
+		hospitalConUnDoctor = new Hospital()
+		hospitalConUnDoctor.agregaCurador(doctor)
+	}
+	
+	test "si el hospital no tiene doctores, la calidad es 0" {
+		assert.equals(hospitalSinDoctoresNiPacientes.calidad(), 0)
+	}
+	
+	test "si el hospital no tiene doctores, da desconfianza" {
+		assert.that(hospitalSinDoctoresNiPacientes.dasDesconfianza())
+	}
+	
+	test "si un doctor cura a un enfermo, su vida vuelve a 100" {
+		doctor.cura(enfermo)
+		assert.equals(enfermo.vida(), 100)
+	}
+	
+	test "si el hospital cura a un enfermo, su vida vuelve a 100" {
+		hospitalConUnDoctor.cura(enfermo)
+		assert.equals(enfermo.vida(), 100)
+	}
+	
+	test "si el hospital cura a un enfermo, éste se agrega entre los pacientes atendidos"{
+		hospitalConUnDoctor.cura(enfermo)
+		assert.that(hospitalConUnDoctor.atendiste(enfermo))
+	}
+	
+	test "si el hospital solo tiene a otro hospital dentro, la persona se cura igual"{
+		const subHospital = new Hospital()
+		subHospital.agregaCurador(doctor)
+		
+		const hospitalGrandote = hospitalSinDoctoresNiPacientes // Solo por expresividad
+		hospitalGrandote.agregaCurador(subHospital)
+		
+		hospitalGrandote.cura(enfermo)
+		assert.equals(enfermo.vida(), 100)
+	}
+}
+
+
