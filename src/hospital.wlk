@@ -56,6 +56,7 @@ class Doctor {
 
 	// Comentario sin sentido
 
+	// A veeerr
 	method aumentaCalidad(puntosParaAumentar) {
 		self.calidad(self.calidad() + puntosParaAumentar)
 	}
