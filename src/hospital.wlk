@@ -34,7 +34,7 @@ class Hospital {
 	}
 
 	method peorCurador() = self.curadores().min({doctor => doctor.calidad()})
-
+	// Pfffff
 	method eliminaCuradores(){
 		self.curadores([])
 	}
